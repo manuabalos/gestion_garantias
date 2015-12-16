@@ -1,8 +1,13 @@
 Redmine::Plugin.register :gestion_garantias do
-  name 'Gestion Garantias plugin'
-  author 'Author name'
-  description 'This is a plugin for Redmine'
+  name 'Redmine Gestion Garantias'
+  author 'mabalos'
+  description 'Permite almacenar los datos de los servicios tecnicos en cada expediente adjudicado por la Agencia de Educacion.'
   version '0.0.1'
-  url 'http://example.com/path/to/plugin'
-  author_url 'http://example.com/about'
+  author_url 'http://www.emergya.es'
+
+ project_module :gestion_garantias do
+    permission :gg_view_config, :gg_providers => [:index]
+ end
+ 
+ menu :project_menu, :config_gestion_garantias, { :controller => 'gg_providers', :action => 'index' }, :caption => 'Gestion de garantias', :last => true, :param => :project_id
 end
