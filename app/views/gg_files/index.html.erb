@@ -1,0 +1,26 @@
+<div class="contextual">
+    <%= link_to '<span class="icon icon-add">'.html_safe+"Nuevo expediente", :controller => :gg_files, :action => :new, :project_id => @project %>
+</div>
+<h2> Expedientes </h2>
+
+<table class="list">
+<thead>
+<tr>
+   <th>Identificador expediente</th>
+   <th>Código expediente</th>
+   <th>Permisos</th>
+</tr>
+</thead>
+<tbody>
+  <% @files.each do |file| %>
+    <tr class="<%= cycle("odd", "even") %>">
+     <td><%= file.identity_file %></td>
+     <td><%= file.code_file %></td>
+     <td>
+        <%= link_to '<span class="icon icon-edit">'.html_safe+l(:text_edit), project_gg_file_path(file, :project_id => @project) %>
+        <%= link_to '<span class="icon icon-del">'.html_safe+l(:text_delete), project_gg_file_path(file, :project_id => @project), :confirm => "¿Desea eliminar este proveedor?", :method => :delete %>
+     </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

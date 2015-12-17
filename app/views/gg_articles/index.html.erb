@@ -1,0 +1,28 @@
+<div class="contextual">
+    <%= link_to '<span class="icon icon-add">'.html_safe+"Nuevo proveedor", :controller => :gg_articles, :action => :index, :project_id => @project %>
+</div>
+<h2> Proveedores </h2>
+
+<table class="list">
+<thead>
+<tr>
+   <th>Código expediente</th>
+   <th>Nombre proveedor</th>
+   <th>Código de artículo</th>
+   <th>Permisos</th>
+</tr>
+</thead>
+<tbody>
+  <% @articles.each do |article| %>
+    <tr class="<%= cycle("odd", "even") %>">
+     <td><%= article.code_file %></td>
+     <td><%= article.name_provider %></td>
+     <td><%= article.code_article %></td>
+     <td>
+        <%= link_to '<span class="icon icon-edit">'.html_safe+l(:text_edit), project_gg_article_path(article, :project_id => @project) %>
+        <%= link_to '<span class="icon icon-del">'.html_safe+l(:text_delete), project_gg_article_path(article, :project_id => @project), :confirm => "¿Desea eliminar este proveedor?", :method => :delete %>
+     </td>
+    </tr>
+  <% end %>
+</tbody>
+</table>

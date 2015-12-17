@@ -6,8 +6,8 @@ Redmine::Plugin.register :gestion_garantias do
   author_url 'http://www.emergya.es'
 
  project_module :gestion_garantias do
-    permission :gg_view_config, :gg_providers => [:index]
+    permission :gg_view_config, :gg_files => [:index, :new]
  end
  
- menu :project_menu, :config_gestion_garantias, { :controller => 'gg_providers', :action => 'index' }, :caption => 'Gestion de garantias', :last => true, :param => :project_id
+ menu :project_menu, :config_gestion_garantias, { :controller => 'gg_files', :action => 'index' }, :caption => 'Gestion de garantias', :last => true, :param => :project_id
 end
