@@ -2,7 +2,7 @@ class GgFile < ActiveRecord::Base
   unloadable
 
   has_many :gg_articles
-  #validates :identity_file, presence: { :message => "El identidicador del expediente no puede estar vacío." }
+  # validates :identity_file, presence: { :message => "El identidicador del expediente no puede estar vacío." }
   validate :identity_file_is_blank
   validate :code_file_is_blank
 

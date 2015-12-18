@@ -15,7 +15,7 @@ class GgFilesController < ApplicationController
   end
 
   def create
-  	@file = GgFile.new(params["gg_file"])
+  	@file = GgFile.new params["gg_file"]
 
   	if @file.save
       flash[:notice] = l(:"file.notice_create")
@@ -44,7 +44,7 @@ class GgFilesController < ApplicationController
     # FALTA COMPROBAR QUE ELIMINA LAS RELACIONES:
     #       > ARTICULOS - CONTACTOS 
     #       > EXPEDIENTE - ARTICULOS
-    
+
     if @file.destroy
       flash[:notice] = l(:"file.notice_destroy")
     else
@@ -54,7 +54,8 @@ class GgFilesController < ApplicationController
     redirect_to project_gg_home_path(:project_id => @project.id)
   end
 
+  private
   def set_file
-    @file = GgFile.find(params[:id]) 
+    @file = GgFile.find params[:id]
   end
 end
