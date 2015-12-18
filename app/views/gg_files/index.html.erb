@@ -6,19 +6,23 @@
 <table class="list">
 <thead>
 <tr>
-   <th>Identificador expediente</th>
-   <th>Código expediente</th>
-   <th>Permisos</th>
+   <th><%= l(:"file.identity_file") %></th>
+   <th><%= l(:"file.code_file") %></th>
+   <th><%= l(:"file.n_articles") %></th>
+   <th><%= l(:"file.n_providers") %></th>
+   <th><%= l(:"file.permissions") %></th>
 </tr>
 </thead>
 <tbody>
   <% @files.each do |file| %>
     <tr class="<%= cycle("odd", "even") %>">
      <td><%= file.identity_file %></td>
-     <td><%= file.code_file %></td>
+     <td><%= link_to file.code_file, project_gg_file_path(file, :project_id => @project) %></td>
+     <td><%= file.gg_articles.count %></td>
+     <td><%= file.gg_articles.count %></td>
      <td>
-        <%= link_to '<span class="icon icon-edit">'.html_safe+l(:text_edit), project_gg_file_path(file, :project_id => @project) %>
-        <%= link_to '<span class="icon icon-del">'.html_safe+l(:text_delete), project_gg_file_path(file, :project_id => @project), :confirm => "¿Desea eliminar este proveedor?", :method => :delete %>
+        <%= link_to '<span class="icon icon-edit">'.html_safe+l(:text_edit), edit_project_gg_file_path(file, :project_id => @project) %>
+        <%= link_to '<span class="icon icon-del">'.html_safe+l(:text_delete), project_gg_file_path(file, :project_id => @project), :confirm => l(:"file.confirm_delete"), :method => :delete %>
      </td>
     </tr>
   <% end %>

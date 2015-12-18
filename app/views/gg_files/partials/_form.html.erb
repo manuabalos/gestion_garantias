@@ -1,0 +1,13 @@
+<h2> Expediente </h2>
+<%= form_for [@project, @file] do |f| %>
+	<div><%= f.label "Identificador del expediente: " %></div>
+	<%= f.text_field(:identity_file, :size => 30) %>
+	
+	<div><%= f.label "Código del expediente: " %></div>
+	<%= f.text_field(:code_file, :size => 30) %>
+
+	<div>
+	<%= f.submit "Guardar", style: "float: left;" %>
+	</div>
+<% end %>
+<%= button_to "Volver", project_gg_home_path(:project_id => @project.id) %>

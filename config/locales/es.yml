@@ -1,0 +1,15 @@
+en:
+  file:
+      identity_file: "Identificador del expediente"
+      code_file: "Código del expediente"
+      n_providers: "Nº de proveedores"
+      n_articles: "Nº de artículos"
+      permissions: "Permisos"
+      notice_create: "Expediente creado correctamente."
+      notice_edit: "Expediente modificado correctamente."
+      notice_destroy: "Expediente eliminado correctamente."
+      confirm_delete: "¿Desea eliminar este expediente?"
+      error:
+          action_destroy: "Expediente eliminado correctamente."
+          validation_indentity_file_blank: "El identificador del expediente debe de introducirse."
+          validation_code_file_blank: "El código del expediente debe de introducirse."
