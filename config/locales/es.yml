@@ -11,7 +11,7 @@ en:
       notice_destroy: "Expediente eliminado correctamente."
       confirm_delete: "¿Desea eliminar este expediente?"
       error:
-          action_destroy: "Expediente eliminado correctamente."
+          action_destroy: "Error al intentar eliminar el expediente."
           validation_indentity_file_blank: "El identificador del expediente debe de introducirse."
           validation_code_file_blank: "El código del expediente debe de introducirse."
 
@@ -21,10 +21,20 @@ en:
       notice_destroy: "Artículo eliminado correctamente."
       confirm_delete: "¿Desea eliminar este artículo?"
       error:
-          action_destroy: "Artículo eliminado correctamente."
+          action_destroy: "Error al intentar eliminar el artículo."
           validation_code_article_blank: "El código del artículo debe de introducirse."
           validation_name_provider_blank: "El nombre del proveedor debe introducirse."
           validation_guarantee_blank: "El tiempo de garantía debe introducirse."
           validation_guarantee_number: "El tiempo de garantía ha de ser un número entero."
           validation_ans_blank: "El tiempo de ANS debe introducirse."
           validation_ans_number: "El tiempo de ANS ha de ser un número entero."
+
+  contact:
+      new: "Nuevo contacto"
+      notice_create: "Contacto creado correctamente"
+      notice_edit: "Contacto modificado correctamente."
+      notice_destroy: "Contacto eliminado correctamente."
+      confirm_delete: "¿Desea eliminar este contacto?"
+
+      error:
+          action_destroy: "Error al intentar eliminar el contacto."

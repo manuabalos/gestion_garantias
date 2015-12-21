@@ -7,7 +7,7 @@ class GgFilesController < ApplicationController
   before_filter :set_file, only: [:edit, :update, :destroy]
 
   def index
-  	@files = GgFile.all
+  	@files = GgFile.order("identity_file ASC")
   end
 
   def new
@@ -27,24 +27,20 @@ class GgFilesController < ApplicationController
   end
 
   def edit
-    
+    @articles = @file.gg_articles.order("code_article ASC")
   end
 
-   def update 
-      if @file.update_attributes(params[:gg_file]) 
-        flash[:notice] = l(:"file.notice_edit")
-        redirect_to project_gg_home_path(:project_id => @project.id)
-      else
-        flash[:error] = @file.get_error_message
-        redirect_to action: 'edit', :project_id => @project.id
-      end
+  def update 
+    if @file.update_attributes(params[:gg_file]) 
+      flash[:notice] = l(:"file.notice_edit")
+      redirect_to project_gg_home_path(:project_id => @project.id)
+    else
+      flash[:error] = @file.get_error_message
+      redirect_to action: 'edit', :project_id => @project.id
     end
+  end
 
   def destroy
-    # FALTA COMPROBAR QUE ELIMINA LAS RELACIONES:
-    #       > ARTICULOS - CONTACTOS 
-    #       > EXPEDIENTE - ARTICULOS
-
     if @file.destroy
       flash[:notice] = l(:"file.notice_destroy")
     else

@@ -5,22 +5,23 @@ class GgArticlesController < ApplicationController
   before_filter :find_project_by_project_id, :authorize
 
   before_filter :set_article, only: [:edit, :update, :destroy]
-  before_filter :set_file, only: [:index, :new, :create, :destroy]
-
-  def index
-    @articles = @file.gg_articles.order("code_article ASC")
-  end
+  before_filter :set_file, only: [:new, :create, :edit, :update, :destroy]
 
   def new
     @article = GgArticle.new
+    @contacts = []
+    (0..2).each do |i|
+      @contacts[i] = GgContact.new(:id => i) 
+    end
   end
+
 
   def create
     @article = GgArticle.new params["gg_article"]
 
     if @article.save
       flash[:notice] = l(:"article.notice_create")
-      redirect_to  project_gg_file_gg_articles_path(@file, :project_id => @project)
+      redirect_to  edit_project_gg_file_path(@file, :project_id => @project)
     else
       flash[:error] = @article.get_error_message
       redirect_to action: 'new', :project_id => @project
@@ -28,13 +29,17 @@ class GgArticlesController < ApplicationController
   end
 
   def edit
-    
+    @contacts = @article.gg_contacts.order("level ASC")
+
+    (@contacts.count..2).each do |i|
+      @contacts[i] = GgContact.new(:id => i)
+    end
   end
 
   def update 
-    if @article.update_attributes(params[:gg_file]) 
+    if @article.update_attributes(params[:gg_article]) 
       flash[:notice] = l(:"article.notice_edit")
-      redirect_to project_gg_home_path(:project_id => @project.id)
+      redirect_to edit_project_gg_file_path(@file, :project_id => @project.id)
     else
       flash[:error] = @article.get_error_message
       redirect_to action: 'edit', :project_id => @project.id
@@ -42,16 +47,13 @@ class GgArticlesController < ApplicationController
   end
 
   def destroy
-    # FALTA COMPROBAR QUE ELIMINA LAS RELACIONES:
-    #       > ARTICULOS - CONTACTOS 
-
     if @article.destroy
       flash[:notice] = l(:"article.notice_destroy")
     else
       flash[:error] = l(:"article.error.action_destroy")
     end
 
-    redirect_to project_gg_file_gg_articles_path(@file, :project_id => @project)
+    redirect_to edit_project_gg_file_path(@file, :project_id => @project)
   end
 
   private

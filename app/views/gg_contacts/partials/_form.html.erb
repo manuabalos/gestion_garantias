@@ -17,10 +17,13 @@
 	<fieldset>
 		<legend> Contactos </legend>
 		<% (0..2).each do |i| %>
-			<%= f.fields_for :gg_contacts, @contacts[i] do |j| %>
+			<%= f.fields_for :contacts, @contacts[i] do |j| %>
 				<fieldset>
 					<legend> Nivel <%= i+1 %></legend>
-					<%= j.hidden_field :level, :value => i+1 %>
+					<%= j.hidden_field :level, :value => i %>
+
+					<div><%= j.label "Nivel: " %></div>
+					<%= j.text_field(:level, :size => 30) %>
 
 					<div><%= j.label "Nombre: " %></div>
 					<%= j.text_field(:name, :size => 30) %>
@@ -39,4 +42,3 @@
 	<%= f.submit "Guardar", style: "float: left;" %>
 	</div>
 <% end %>
-<%# button_to "Volver", project_gg_home_path(:project_id => @project.id) %>

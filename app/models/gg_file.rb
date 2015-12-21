@@ -1,8 +1,8 @@
-class GgFile < ActiveRecord::Base
+﻿class GgFile < ActiveRecord::Base
   unloadable
 
-  has_many :gg_articles
-  # validates :identity_file, presence: { :message => "El identidicador del expediente no puede estar vacío." }
+  has_many :gg_articles, :dependent => :destroy
+  #validates :identity_file, :presence => { :message => "El identidicador del expediente no puede estar vacío." }
   validate :identity_file_is_blank
   validate :code_file_is_blank
 

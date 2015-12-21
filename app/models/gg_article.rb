@@ -2,14 +2,15 @@ class GgArticle < ActiveRecord::Base
   unloadable
   
   belongs_to :gg_file
-  has_many :gg_contacts
+  has_many :gg_contacts, :dependent => :destroy
+  accepts_nested_attributes_for :gg_contacts
 
   validate :code_article_is_blank
   validate :name_provider_is_blank
   validate :guarantee_is_blank
-  validate :guarantee_is_number
+  # validate :guarantee_is_number
   validate :ans_is_blank
-  validate :ans_is_number
+  # validate :ans_is_number
 
   # Genera mensaje de error
   def get_error_message
@@ -41,11 +42,11 @@ class GgArticle < ActiveRecord::Base
  	errors.add :base, l(:"article.error.validation_ans_blank") if self.ans.blank?
   end
 
-  def guarantee_is_number
-  	errors.add :base, l(:"article.error.validation_guarantee_number") if self.guarantee.is_a? Numeric
-  end
+ #  def guarantee_is_number
+ #  	errors.add :base, l(:"article.error.validation_guarantee_number") if self.guarantee.is_a? Integer
+ #  end
 
-  def ans_is_number
-	errors.add :base, l(:"article.error.validation_ans_number") if self.ans.is_a? Numeric
-  end
+ #  def ans_is_number
+	# errors.add :base, l(:"article.error.validation_ans_number") if self.ans.is_a? Integer
+ #  end
 end
