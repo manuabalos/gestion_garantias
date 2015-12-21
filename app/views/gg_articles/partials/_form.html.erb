@@ -2,16 +2,16 @@
 <%= form_for [@project, @file, @article] do |f| %>
 	<%= f.hidden_field :gg_file_id, :value => @file.id %>
 
-	<div><%= f.label "Código del artículo: " %></div>
+	<div><%= f.label l(:"article.code_article")+": " %></div>
 	<%= f.text_field(:code_article, :size => 30) %>
 	
-	<div><%= f.label "Nombre del proveedor: " %></div>
+	<div><%= f.label l(:"article.name_provider")+": " %></div>
 	<%= f.text_field(:name_provider, :size => 30) %>
 
-	<div><%= f.label "Garantía: " %></div>
+	<div><%= f.label l(:"article.guarantee")+": " %></div>
 	<%= f.text_field(:guarantee, :size => 30) %>
 
-	<div><%= f.label "ANS (Acuerdo de nivel de servicio): " %></div>
+	<div><%= f.label l(:"article.ans_description")+": " %></div>
 	<%= f.text_field(:ans, :size => 30) %>
 
 	<fieldset>
@@ -22,13 +22,13 @@
 					<legend> Nivel <%= i+1 %></legend>
 					<%= j.hidden_field :level, :value => i+1 %>
 
-					<div><%= j.label "Nombre: " %></div>
+					<div><%= j.label l(:"contact.name")+": " %></div>
 					<%= j.text_field(:name, :size => 30) %>
 					
-					<div><%= j.label "Teléfono: " %></div>
+					<div><%= j.label l(:"contact.phone")+": " %></div>
 					<%= j.text_field(:phone, :size => 30) %>
 
-					<div><%= j.label "E-mail: " %></div>
+					<div><%= j.label l(:"contact.email")+": " %></div>
 					<%= j.text_field(:email, :size => 30) %>
 				</fieldset>
 			<% end %>
@@ -36,7 +36,7 @@
 	</fieldset>
 
 	<div>
-	<%= f.submit "Guardar", style: "float: left;" %>
+	<%= f.submit l(:"text_save"), style: "float: left;" %>
 	</div>
 <% end %>
-<%# button_to "Volver", project_gg_home_path(:project_id => @project.id) %>
+<%= button_to l(:"text_back"), edit_project_gg_file_path(@file, :project_id => @project) %>

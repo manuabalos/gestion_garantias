@@ -1,13 +1,13 @@
-<h2> Expediente </h2>
+<h2><%= l(:"file.file") %></h2>
 <%= form_for [@project, @file] do |f| %>
-	<div><%= f.label "Identificador del expediente: " %></div>
+	<div><%= f.label l(:"file.identity_file")+": " %></div>
 	<%= f.text_field(:identity_file, :size => 30) %>
 	
-	<div><%= f.label "Código del expediente: " %></div>
+	<div><%= f.label l(:"file.code_file")+": " %></div>
 	<%= f.text_field(:code_file, :size => 30) %>
 
 	<div>
-	<%= f.submit "Guardar", style: "float: left;" %>
+	<%= f.submit l(:"text_save"), style: "float: left;" %>
 	</div>
 <% end %>
-<%= button_to "Volver", project_gg_home_path(:project_id => @project.id) %>
+<%= button_to l(:"text_back"), project_gg_home_path(:project_id => @project) %>

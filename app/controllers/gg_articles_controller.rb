@@ -39,10 +39,10 @@ class GgArticlesController < ApplicationController
   def update 
     if @article.update_attributes(params[:gg_article]) 
       flash[:notice] = l(:"article.notice_edit")
-      redirect_to edit_project_gg_file_path(@file, :project_id => @project.id)
+      redirect_to edit_project_gg_file_path(@file, :project_id => @project)
     else
       flash[:error] = @article.get_error_message
-      redirect_to action: 'edit', :project_id => @project.id
+      redirect_to action: 'edit', :project_id => @project
     end
   end
 

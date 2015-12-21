@@ -1,11 +1,18 @@
-en:
+es:
+  text_save: "Guardar"
+  text_back: "Volver"
+  text_edit: "Editar"
+  text_delete: "Eliminar"
+
   file:
+      file: "Expediente"
+      files: "Expedientes"
       identity_file: "Identificador del expediente"
       code_file: "Código del expediente"
       n_providers: "Nº de proveedores"
       n_articles: "Nº de artículos"
       permissions: "Permisos"
-      new: "Nuevo artículo"
+      new: "Nuevo expediente"
       notice_create: "Expediente creado correctamente."
       notice_edit: "Expediente modificado correctamente."
       notice_destroy: "Expediente eliminado correctamente."
@@ -16,6 +23,17 @@ en:
           validation_code_file_blank: "El código del expediente debe de introducirse."
 
   article:
+      articles: "Artículos"
+      new: "Nuevo artículo"
+      code_article: "Código de artículo"
+      name_provider: "Nombre del proveedor"
+      guarantee: "Garantía"
+      ans: "ANS"
+      ans_description: "ANS (Acuerdo de nivel de servicio)"
+      permissions: "Permisos"
+      days: "día(s)"
+      hours: "hora(s)"
+      new: "Nuevo artículo"
       notice_create: "Artículo creado correctamente."
       notice_edit: "Artículo modificado correctamente."
       notice_destroy: "Artículo eliminado correctamente."
@@ -30,6 +48,10 @@ en:
           validation_ans_number: "El tiempo de ANS ha de ser un número entero."
 
   contact:
+      name: "Nombre"
+      phone: "Teléfono"
+      email: "E-mail"
+      level: "Nivel"
       new: "Nuevo contacto"
       notice_create: "Contacto creado correctamente"
       notice_edit: "Contacto modificado correctamente."

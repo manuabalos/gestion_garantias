@@ -33,10 +33,10 @@ class GgFilesController < ApplicationController
   def update 
     if @file.update_attributes(params[:gg_file]) 
       flash[:notice] = l(:"file.notice_edit")
-      redirect_to project_gg_home_path(:project_id => @project.id)
+      redirect_to project_gg_home_path(:project_id => @project)
     else
       flash[:error] = @file.get_error_message
-      redirect_to action: 'edit', :project_id => @project.id
+      redirect_to action: 'edit', :project_id => @project
     end
   end
 
@@ -47,7 +47,7 @@ class GgFilesController < ApplicationController
       flash[:error] = l(:"file.error.action_destroy")
     end
 
-    redirect_to project_gg_home_path(:project_id => @project.id)
+    redirect_to project_gg_home_path(:project_id => @project)
   end
 
   private
