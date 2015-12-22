@@ -1,0 +1,33 @@
+.form_articles_button{
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+.form_articles_button_back{
+	margin-left: 5px;
+}
+
+.f_contacts{
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.f_level{
+	margin-top: 10px;
+	margin-bottom: 10px;
+	margin-left: 5px;
+	margin-right: 5px;
+	background-color: rgba(98,141,182,0.1);
+}
+
+.div_contact{
+	width: 260px;
+	float: left;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	padding-left: 12px;
+}
+
+.l_contact{
+	margin: 0;
+}

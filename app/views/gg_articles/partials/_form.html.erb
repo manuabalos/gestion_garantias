@@ -1,3 +1,8 @@
+<%= csrf_meta_tag %>
+<% content_for :header_tags do %>
+   <%= stylesheet_link_tag "/gg_articles.css", :plugin => 'gestion_garantias', :media => "screen" %>
+<% end %>
+
 <h2> Artículo </h2>
 <%= form_for [@project, @file, @article] do |f| %>
 	<%= f.hidden_field :gg_file_id, :value => @file.id %>
@@ -14,29 +19,34 @@
 	<div><%= f.label l(:"article.ans_description")+": " %></div>
 	<%= f.text_field(:ans, :size => 30) %>
 
-	<fieldset>
-		<legend> Contactos </legend>
+	<fieldset class="f_contacts">
+		<legend><h2>Contactos</h2></legend>
 		<% (0..2).each do |i| %>
 			<%= f.fields_for :gg_contacts, @contacts[i] do |j| %>
-				<fieldset>
+				<fieldset class="f_level">
 					<legend> Nivel <%= i+1 %></legend>
 					<%= j.hidden_field :level, :value => i+1 %>
 
-					<div><%= j.label l(:"contact.name")+": " %></div>
-					<%= j.text_field(:name, :size => 30) %>
-					
-					<div><%= j.label l(:"contact.phone")+": " %></div>
-					<%= j.text_field(:phone, :size => 30) %>
+					<div class="div_contact">
+						<p class="l_contact"><%= j.label l(:"contact.name")+": " %></p>
+						<%= j.text_field(:name, :size => 30) %>
+					</div>
+					<div class="div_contact">
+						<p class="l_contact"><%= j.label l(:"contact.phone")+": " %></p>
+						<%= j.text_field(:phone, :size => 30) %>
+					</div>
 
-					<div><%= j.label l(:"contact.email")+": " %></div>
-					<%= j.text_field(:email, :size => 30) %>
+					<div class="div_contact">
+						<p class="l_contact"><%= j.label l(:"contact.email")+": " %></p>
+						<%= j.text_field(:email, :size => 30) %>
+					</div>
 				</fieldset>
 			<% end %>
 		<% end %>
 	</fieldset>
 
 	<div>
-	<%= f.submit l(:"text_save"), style: "float: left;" %>
+	<%= f.submit l(:"text_save"), style: "float: left;", class: "form_articles_button" %>
 	</div>
 <% end %>
-<%= button_to l(:"text_back"), edit_project_gg_file_path(@file, :project_id => @project) %>
+<%= button_to l(:"text_back"), edit_project_gg_file_path(@file, :project_id => @project), class: "form_articles_button form_articles_button_back" %>
