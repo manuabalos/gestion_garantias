@@ -3,7 +3,7 @@
    <%= stylesheet_link_tag "/gg_articles.css", :plugin => 'gestion_garantias', :media => "screen" %>
 <% end %>
 
-<h2> Artículo </h2>
+<h2><%= l(:"article.article") %></h2>
 <%= form_for [@project, @file, @article] do |f| %>
 	<%= f.hidden_field :gg_file_id, :value => @file.id %>
 
@@ -20,11 +20,11 @@
 	<%= f.text_field(:ans, :size => 30) %>
 
 	<fieldset class="f_contacts">
-		<legend><h2>Contactos</h2></legend>
+		<legend><h2><%= l(:"contact.contacts") %></h2></legend>
 		<% (0..2).each do |i| %>
 			<%= f.fields_for :gg_contacts, @contacts[i] do |j| %>
 				<fieldset class="f_level">
-					<legend> Nivel <%= i+1 %></legend>
+					<legend> <%= l(:"contact.level") %> <%= i+1 %></legend>
 					<%= j.hidden_field :level, :value => i+1 %>
 
 					<div class="div_contact">

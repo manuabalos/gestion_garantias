@@ -28,6 +28,7 @@ es:
           validation_code_file_blank: "El código del expediente debe de introducirse."
 
   article:
+      article: "Artículo"
       articles: "Artículos"
       new: "Nuevo artículo"
       code_article: "Código de artículo"
@@ -54,12 +55,13 @@ es:
           validation_ans_number: "El tiempo de ANS deve de ser un número entero."
 
   contact:
+      contacts: "Contactos"
       name: "Nombre"
       phone: "Teléfono"
       email: "E-mail"
       level: "Nivel"
       new: "Nuevo contacto"
-      notice_create: "Contacto creado correctamente"
+      notice_create: "Contacto creado correctamente."
       notice_edit: "Contacto modificado correctamente."
       notice_destroy: "Contacto eliminado correctamente."
       confirm_delete: "¿Desea eliminar este contacto?"
@@ -68,7 +70,3 @@ es:
           action_destroy: "Error al intentar eliminar el contacto."
           validation_email_regexp: "El email debe de tener el formato correcto, por ejemplo: example@email.com"
           validation_phone_regexp: "El número de teléfono debe de tener el formato correcto, por ejemplo: 900 10 20 30"
-  activerecord:
-    attributes:
-      gg_article:
-        code_article: 'hola'
