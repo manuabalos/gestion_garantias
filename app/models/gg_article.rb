@@ -3,6 +3,7 @@ class GgArticle < ActiveRecord::Base
   
   belongs_to :gg_file
   has_many :gg_contacts, :dependent => :destroy
+  has_many :gg_ans, :dependent => :destroy
   accepts_nested_attributes_for :gg_contacts
 
   validates :code_article, :numericality => { :message => l(:"article.error.validation_code_article_number")}

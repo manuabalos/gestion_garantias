@@ -4,7 +4,8 @@ class CreateArticles < ActiveRecord::Migration
         t.column :gg_file_id, :integer
       	t.column :code_article, :integer
         t.column :name_provider, :string
-        t.column :guarantee, :integer
+        t.column :guarantee_start, :datetime
+        t.column :guarantee_end, :datetime
         t.column :ans, :integer
     end
   end

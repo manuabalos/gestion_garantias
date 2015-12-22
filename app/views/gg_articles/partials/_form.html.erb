@@ -49,4 +49,4 @@
 	<%= f.submit l(:"text_save"), style: "float: left;", class: "form_articles_button" %>
 	</div>
 <% end %>
-<%= button_to l(:"text_back"), edit_project_gg_file_path(@file, :project_id => @project), class: "form_articles_button form_articles_button_back" %>
+<%= button_to l(:"text_back"), edit_project_gg_file_path(@file, :project_id => @project), class: "form_articles_button form_articles_button_back", :method => :get %>
