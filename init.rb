@@ -1,3 +1,5 @@
+require 'gg/application_helper_patch'
+
 Redmine::Plugin.register :gestion_garantias do
   name 'Redmine Gestion Garantias'
   author 'mabalos'

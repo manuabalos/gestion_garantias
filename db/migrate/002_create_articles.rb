@@ -6,7 +6,6 @@ class CreateArticles < ActiveRecord::Migration
         t.column :name_provider, :string
         t.column :guarantee_start, :datetime
         t.column :guarantee_end, :datetime
-        t.column :ans, :integer
     end
   end
 

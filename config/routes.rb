@@ -8,6 +8,7 @@ RedmineApp::Application.routes.draw do
 		resources :csme_files, :controller => 'gg_files', :as => 'gg_files' do
 			resources :articles, :controller => 'gg_articles', :as => 'gg_articles' do
 				resources :contacts, :controller => 'gg_contacts', :as => 'gg_contacts'
+				resources :ans, :controller => 'gg_ans', :as => 'gg_ans'
 			end
 		end
 	end

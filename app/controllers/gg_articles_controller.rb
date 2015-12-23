@@ -13,6 +13,11 @@ class GgArticlesController < ApplicationController
     (0..2).each do |i|
       @contacts[i] = GgContact.new(:id => i) 
     end
+
+    @ans = []
+    (0...1).each do |i|
+      @ans[i] = GgAns.new(:id => i) 
+    end
   end
 
 

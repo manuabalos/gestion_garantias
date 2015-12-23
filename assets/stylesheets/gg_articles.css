@@ -1,3 +1,13 @@
+.articles_form_left{
+	width: 300px;
+	float: left;
+}
+
+.articles_form_right{
+	margin-top: -12px;
+	width: 65%;
+}
+
 .form_articles_button{
 	margin-top: 5px;
 	margin-bottom: 5px;
@@ -10,10 +20,11 @@
 .f_contacts{
 	margin-top: 10px;
 	margin-bottom: 10px;
+	max-width: 665px;
 }
 
 .f_level{
-	min-width: 823px;
+	min-width: 665px;
 	margin-top: 10px;
 	margin-bottom: 10px;
 	margin-left: 5px;
@@ -29,6 +40,19 @@
 	padding-left: 12px;
 }
 
-.l_contact{
+.div_contact_phone{
+	width: 95px;
+	float: left;
+	padding-top: 8px;
+	padding-bottom: 10px;
+	padding-left: 12px;
+}
+
+.l_contact, .l_ans{
 	margin: 0;
 }
+
+.t_ans{
+	width: 99%;
+}
+
