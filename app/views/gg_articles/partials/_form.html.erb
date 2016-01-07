@@ -1,6 +1,7 @@
 <div id="prueba">
 <%= csrf_meta_tag %>
 <% content_for :header_tags do %>
+	<%= javascript_include_tag "gg_articles.js", :plugin => 'gestion_garantias' %>
    <%= stylesheet_link_tag "/gg_articles.css", :plugin => 'gestion_garantias', :media => "screen" %>
 <% end %>
 
@@ -19,8 +20,6 @@
 		</tbody>
 	</table>
 
-
-
 	<h2><%= l(:"article.article") %></h2>
 	<%= form_for [@project, @file, @article] do |f| %>
 		<%= f.hidden_field :gg_file_id, :value => @file.id %>
@@ -32,13 +31,18 @@
 		<%= f.text_field(:name_provider, :size => 30) %>
 
 		<div><%= f.label l(:"article.guarantee_start")+": " %></div>
-		<%= f.text_field(:guarantee_start, :size => 8) %>
+		<%= f.text_field(:guarantee_start, :size => 8, :value => @article.guarantee_start.nil? ? "" : @article.guarantee_start.strftime("%d-%m-%Y")) %>
 		<%= calendar_for_es('gg_article_guarantee_start')%>
 
 		<div><%= f.label l(:"article.guarantee_end")+": " %></div>
-		<%= f.text_field(:guarantee_end, :size => 8) %>
+		<%= f.text_field(:guarantee_end, :size => 8, :value => @article.guarantee_end.nil? ? "" : @article.guarantee_end.strftime("%d-%m-%Y")) %>
 		<%= calendar_for_es('gg_article_guarantee_end')%>
+
+		<% if !@message.nil? %>
+			<div class="flash <%= @message[:type] %> message_guarantee" id="flash_<%= @message[:type] %>"><%= @message[:value] %></div>
+		<% end %>
 </div>	
+
 <div class="splitcontentright articles_form_right">
 	<fieldset class="f_contacts">
 		<legend><h2><%= l(:"contact.contacts") %></h2></legend>
@@ -68,29 +72,26 @@
 </div>
 	
 	<div style="clear: both"></div>
+	
 	<fieldset>
-		<legend><h2><%= f.label l(:"ans.ans_description")+": " %></h2></legend>
-		<% (0...1).each do |i| %>
+		<legend><h2><%= f.label l(:"ans.ans_description") %></h2></legend>
+		<% (0...@count_ans).each do |i| %>
 			<%= f.fields_for :gg_ans, @ans[i] do |j| %>
-				<fieldset>
+
+				<fieldset class="f_ans field_for_ans_<%= i %>">
 				<p class="l_ans"><%= j.label l(:"ans.priority")+": " %></p>
 				<%= j.text_field(:priority, :class => "t_ans") %>
 				<p class="l_ans"><%= j.label l(:"ans.description")+": " %></p>
 				<%= j.text_area(:description, :class => "t_ans", :rows => 7) %>
 				</fieldset>
+
 			<% end %>
 		<% end %>
 
-
-	<div class="contextual">
-	    <%= link_to '<span class="icon icon-add">'.html_safe+l(:"ans.new") %>
-	</div>
+		<div class="contextual btn_add_ans">
+		    <a><span class="icon icon-add add_ans" data-count="<%= @count_ans %>"><%= l(:"ans.new") %></span></a>
+		</div>
 	</fieldset>
-
-
-
-
-
 
 	<div>
 	<%= f.submit l(:"text_save"), style: "float: left;", class: "form_articles_button" %>

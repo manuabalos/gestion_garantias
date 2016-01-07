@@ -18,11 +18,12 @@ class GgArticlesController < ApplicationController
     (0...1).each do |i|
       @ans[i] = GgAns.new(:id => i) 
     end
+
+    @count_ans = 1
   end
 
-
   def create
-    @article = GgArticle.new params["gg_article"]
+    @article = GgArticle.new params[:gg_article]
 
     if @article.save
       flash[:notice] = l(:"article.notice_create")
@@ -35,9 +36,17 @@ class GgArticlesController < ApplicationController
 
   def edit
     @contacts = @article.gg_contacts.order("level ASC")
-
     (@contacts.count..2).each do |i|
       @contacts[i] = GgContact.new(:id => i)
+    end
+
+    @ans = @article.gg_ans
+    @count_ans = @article.gg_ans.count
+
+    if Date.current >= @article.guarantee_start.to_date && Date.current <= @article.guarantee_end.to_date
+      @message = {:type => "notice", :value => l(:"article.message_guarantee")}
+    else
+      @message = {:type => "error", :value => l(:"article.message_guarantee_out")}
     end
   end
 
